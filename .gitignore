@@ -1,3 +1,8 @@
+# Local
+scraping/halodoc.csv
+scraping/halodoc2.csv
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
