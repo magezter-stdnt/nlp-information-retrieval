@@ -2,6 +2,8 @@
 scraping/halodoc.csv
 scraping/halodoc2.csv
 
+# Local (too big)
+tf-idf_halodocnew_1.csv 
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
