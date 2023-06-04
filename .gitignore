@@ -4,6 +4,10 @@ scraping/halodoc2.csv
 
 # Local (too big)
 tf-idf_halodocnew_1.csv 
+df_new_query (1).csv 
+tf-idf_train.csv
+df_combined.csv
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
