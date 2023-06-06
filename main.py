@@ -41,9 +41,10 @@ def preprocess_query(query):
     return query
 
 # Get user input
-query = input('Masukkan query: ')
+query = input('Masukkan query : ')
 query = preprocess_query(query)
-    
+print(' > Query akhir :', query)
+
 # Get top document (dokumen dengan nilai cosine similarity tertinggi)
 transformed_text = embedding.transform([query])
 document_id = retriever.kneighbors(transformed_text, return_distance=False)[0][0]
