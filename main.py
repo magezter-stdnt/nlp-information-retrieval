@@ -11,36 +11,29 @@ from sklearn.neighbors import NearestNeighbors
 import joblib
 
 
-# Load the saved models
+# Load model yang sudah dibuat sebelumnya
 embedding = joblib.load('embedding.pkl')
 retriever = joblib.load('retriever.pkl')
 
-# Import dataset df_combined, only import ['content', 'title'] column
+# Import dataset df_combined, hanya kolom ['content', 'title']
 df_combined = pd.read_csv('df_combined.csv', usecols=['content', 'title'])
 
-# def preprocess_query(query):
-#     # Remove stopwords
-#     stop_words = set(stopwords.words('indonesian'))
-#     query = [stemmer.stem(word) for word in word_tokenize(query) if word not in stop_words]
-#     query = ' '.join(query)
-#     return query
-
-# Function to preprocess the query
+# Fungsi untuk memproses query
 def preprocess_query(query):
-    # Tokenize the query
+    # Tokensisasi query
     tokens = word_tokenize(query)
-    # Remove stopwords
+    # Menghapus stopwords
     stop_words = set(stopwords.words('indonesian'))
     tokens = [w for w in tokens if not w in stop_words]
-    # Stemming
+    # Stemming query
     factory = StemmerFactory()
     stemmer = factory.create_stemmer()
     tokens = [stemmer.stem(w) for w in tokens]
-    # Join the tokens
+    # Menggabungkan tokens
     query = ' '.join(tokens)
     return query
 
-# Get user input
+# Mendapatkan input dari user
 query = input('Masukkan query : ')
 query = preprocess_query(query)
 print(' > Query akhir :', query)
@@ -50,7 +43,7 @@ transformed_text = embedding.transform([query])
 document_id = retriever.kneighbors(transformed_text, return_distance=False)[0][0]
 selected = df_combined.iloc[document_id]['content']
 
-# Print the result (dokumen dengan nilai cosine similarity tertinggi)
+# Print dokumen terpilih (dokumen dengan nilai cosine similarity tertinggi)
 print('==============================================================================Hasil pencarian==============================================================================')
 print('\nJudul:\n\t', df_combined.iloc[document_id]['title'])
 print('\nIsi Dokumen:\n\t', selected)
