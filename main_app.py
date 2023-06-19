@@ -63,14 +63,18 @@ window = tk.Tk()
 window.title("Sistem Information Retrieval")
 window.geometry("400x200")
 
+frame = tk.Frame(window)
+frame.pack(expand=True, pady=50)
+
 # Membuat komponen GUI (label, entry, button)
-label_query = tk.Label(window, text="Masukkan query:")
+label_query = tk.Label(frame, text="Masukkan query:")
 label_query.pack()
 
-entry_query = tk.Entry(window)
+entry_query = tk.Entry(frame)
 entry_query.pack()
+entry_query.configure(width=50)
 
-button_search = tk.Button(window, text="Cari", command=search_query)
+button_search = tk.Button(frame, text="Cari", command=search_query)
 button_search.pack()
 
 # Menjalankan window GUI dengan event loop (agar window tidak tertutup saat program dijalankan)
